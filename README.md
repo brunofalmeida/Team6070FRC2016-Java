@@ -1,4 +1,4 @@
-# Glenforest FRC 2016
+# Glenforest FRC 2016 - Team 6070
 
 The official repository for Glenforest's FIRST Robotics Competition 2016 codebase.
 
