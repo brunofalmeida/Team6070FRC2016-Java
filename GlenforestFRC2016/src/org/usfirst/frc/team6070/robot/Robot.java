@@ -14,6 +14,8 @@ public class Robot extends IterativeRobot {
 	boolean horiz = false;
 	boolean twopress = false;
 	
+	boolean sliderValueIsOne = false;
+	
 	/*Victor v1 = new Victor (4);
 	Victor v2 = new Victor (5);
 	Joystick joy = new Joystick (0);
@@ -58,6 +60,11 @@ public class Robot extends IterativeRobot {
         /*v2.set(joy.getX()+joy.getY());
     	v1.set(joy.getX()-joy.getY());*/
     	
+    	if (joy.getThrottle() == 1) {
+    		sliderValueIsOne = true;
+    	} else if (joy.getThrottle() == -1) {
+    		sliderValueIsOne = false;
+    	}
     	
     	if (joy.getX() > 0.1 && joy.getX() < -0.1 && joy.getY() > 0.1 && joy.getY() < -0.1)
     	{
@@ -69,7 +76,7 @@ public class Robot extends IterativeRobot {
     		{
     			drive.mecanumDrive_Cartesian(joy.getY(), joy.getX(), joy.getZ(), 0);
     		}
-    		if (joy.getTrigger() && !twopress)
+    		if (sliderValueIsOne && !twopress)
     		{
     			horiz = !horiz;
     			twopress = true;
@@ -78,7 +85,7 @@ public class Robot extends IterativeRobot {
     			else
     				System.out.println("Vertical mode initiated.");
     		}
-    		if (!joy.getTrigger()) {
+    		if (!sliderValueIsOne) {
     			twopress = false;
     		}
     	}
